@@ -22,3 +22,6 @@ class NoteController:
 
     def delete_note_by_id(self, note_id):
         return self.note_service.delete(note_id)
+
+    def save_notes(self):
+        self.note_service.save_all()

@@ -1,6 +1,7 @@
 import json
 from datetime import datetime
 
+
 class FileStorage:
     def __init__(self, file_path):
         self.file_path = file_path
@@ -40,6 +41,10 @@ class FileStorage:
         self._save_notes(notes)
         self.current_id += 1
         self._save_current_id(self.current_id)
+
+    def save_all(self):
+        notes = self._load_notes()
+        self._save_notes(notes)
 
     def get_all(self):
         return self._load_notes()
