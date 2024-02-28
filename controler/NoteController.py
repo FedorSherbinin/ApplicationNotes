@@ -1,12 +1,12 @@
-from model.Note import Note
-
+from datetime import datetime
 
 class NoteController:
     def __init__(self, note_service):
         self.note_service = note_service
 
     def add_note(self, title, message):
-        self.note_service.add(Note(title, message))
+        note = {'title': title, 'message': message, 'timestamp': datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
+        self.note_service.add(note)
 
     def list_notes(self):
         return self.note_service.list()
@@ -22,6 +22,3 @@ class NoteController:
 
     def delete_note_by_id(self, note_id):
         return self.note_service.delete(note_id)
-
-    def save_notes(self):
-        self.note_service.save_all()
